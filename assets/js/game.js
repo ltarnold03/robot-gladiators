@@ -5,7 +5,12 @@ var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
+console.log(enemyNames.length);
+for(var i = 0; i < 3; i++) {
+    console.log("apple");
+}
+
 var enemyHealth = 50;
 var enemyAttack = 12;
 
@@ -19,7 +24,7 @@ var fight = function() {
     if (promptFight === "fight" || promptFight === "FIGHT") {
         // remove enemy's health by subtracting the amount set in the playerAttack variable enemyHealth = enemyHealth - playerAttack;
         console.log(
-            playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
+            playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
         );
 
     // check enemy's health
@@ -27,12 +32,12 @@ var fight = function() {
         window.alert(enemyHealth + " has died!");
     }
     else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.");
+        window.alert(enemyNames + " still has " + enemyHealth + " health left.");
     }
 
     // remove player's health by subtracting the amount set in the enemyAttack variable playerHealth = playerHealth - enemyAttack;
     console.log (
-        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
+        enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
     );
 
     // check player's health
@@ -56,7 +61,6 @@ var fight = function() {
     else {
         fight();
     }
-    window.alert(playerName + " has chosen to skip the fight!");
 }   else {
     window.alert("You need to choose a valid option. Try again!");
 }
