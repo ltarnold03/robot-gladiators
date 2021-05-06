@@ -21,7 +21,7 @@ var fight = function(enemyNames) {
             if (confirmSkip) {
                 window.alert(playerName + " has decided to skip this fight. Goodbye!");
                 // subtract money from playerMoney for skipping playerMoney = playerMoney - 2;
-                playerMoney = playerMoney - 10;
+                playerMoney = Math.max(0, playerMoney - 10);
                 console.log("playerMoney", playerMoney);
                 break;
             }
@@ -34,7 +34,7 @@ var fight = function(enemyNames) {
         // check if player chose to fight, then fight
         if (promptFight === "fight" || promptFight === "FIGHT") {
             // remove enemy's health by subtracting the amount set in the playerAttack variable enemyHealth = enemyHealth - playerAttack;
-            enemyHealth = enemyHealth - playerAttack
+            enemyHealth = Math.max(0, enemyHealth - playerAttack);
             console.log(
                 playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
             );
@@ -54,7 +54,7 @@ var fight = function(enemyNames) {
         }
 
         // remove player's health by subtracting the amount set in the enemyAttack variable playerHealth = playerHealth - enemyAttack;
-        playerHealth = playerHealth - enemyAttack
+        playerHealth = Math.max(0, playerHealth - enemyAttack);
         console.log (
             enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
         );
@@ -190,12 +190,9 @@ var shop = function() {
     }
 };
 
-//Games States
-// "WIN" - Player robot has defeated all enemy-robots
-// After defeating an enemy, ask the user if they would like to purchase an item from the store
-// The user can either purchase health or attack point, if they can afford it
 
-//shop
+//Games States
+// 
 
 // start the game when the page loads
 startGame ();
