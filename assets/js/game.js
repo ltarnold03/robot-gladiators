@@ -34,7 +34,10 @@ var fight = function(enemyNames) {
         // check if player chose to fight, then fight
         if (promptFight === "fight" || promptFight === "FIGHT") {
             // remove enemy's health by subtracting the amount set in the playerAttack variable enemyHealth = enemyHealth - playerAttack;
-            enemyHealth = Math.max(0, enemyHealth - playerAttack);
+            // generate random damage value based on player's attack power
+            var damage = randomNumber(playerAttack - 3, playerAttack);
+
+            enemyHealth = Math.max(0, enemyHealth - damage);
             console.log(
                 playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
             );
@@ -54,7 +57,10 @@ var fight = function(enemyNames) {
         }
 
         // remove player's health by subtracting the amount set in the enemyAttack variable playerHealth = playerHealth - enemyAttack;
-        playerHealth = Math.max(0, playerHealth - enemyAttack);
+        // generate random damage value based on enemy's attack power
+        var damage = randomNumber(enemyAttack - 3, enemyAttack);
+
+        playerHealth = Math.max(0, playerHealth - damage);
         console.log (
             enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
         );
@@ -90,7 +96,7 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // reset enemyHealth before starting new fight
-            enemyHealth = 50
+            enemyHealth = randomNumber(40, 60);
 
             //use debugger to pause script from running and check what's going on at that moment in the code
             //debugger;
@@ -185,14 +191,17 @@ var shop = function() {
             window.alert("You did not pick a valid option. Try again.");
 
             // call shop() again to force player to pick a valid option
-            shop()
+            shop();
             break;
     }
 };
 
+// function to generate a randon numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
 
-//Games States
-// 
+    return value;
+};
 
 // start the game when the page loads
 startGame ();
